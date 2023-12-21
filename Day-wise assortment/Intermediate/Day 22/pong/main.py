@@ -2,6 +2,14 @@ import time
 from turtle import Screen
 from player import Player
 from ball import Ball
+from scoreboard import ScoreBoard
+
+
+# Defining a function to change the flag to False for in argument
+def exit_loop():
+    global game_is_on
+    game_is_on = score_board.exit_game()
+
 
 # Step 1: is initializing the screen
 screen = Screen()
@@ -13,6 +21,12 @@ screen.bgcolor("gray80")
 # Step 2: Initialising players
 player_1 = Player()
 player_2 = Player()
+
+# Step 3: Creating ball
+ball = Ball()
+
+# Initialising the scoreboard
+score_board = ScoreBoard()
 
 # Setting positions of player
 player_1.set_positions(1)
@@ -27,11 +41,13 @@ screen.onkeypress(key="s", fun=player_1.down)
 screen.onkeypress(key="Up", fun=player_2.up)
 screen.onkeypress(key="Down", fun=player_2.down)
 
-# Step 3: Creating ball
-ball = Ball()
+# Displaying the Scoreboard
+score_board.update_scoreboard()
 
 # Turning our game on
 game_is_on = True
+# Exiting the game on clicking Escape
+screen.onkey(key="Escape", fun=exit_loop)
 while game_is_on:
     ball.move()
 
@@ -48,7 +64,16 @@ while game_is_on:
         ball.bounce_x()
 
     # Detecting if the ball has moved beyond player
-    if ball.xcor() > 425 or ball.xcor() < -425:
-        game_is_on = False
+    if ball.xcor() > 425:
+        score_board.increase_score(1)
+        ball.set_ball()
+        score_board.update_scoreboard()
+        time.sleep(1.5)
+
+    if ball.xcor() < -425:
+        score_board.increase_score(2)
+        ball.set_ball()
+        score_board.update_scoreboard()
+        time.sleep(1.5)
 
 screen.exitonclick()
