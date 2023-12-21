@@ -25,3 +25,5 @@ class Ball(Turtle):
     def set_ball(self):
         # The work of this function is to restart the game once any player gains a point
         self.goto(0, 0)
+        self.x_move *= -1
+        self.y_move *= -1
