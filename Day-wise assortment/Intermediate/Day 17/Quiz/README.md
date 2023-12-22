@@ -1,0 +1,11 @@
+# Quiz Game
+- The game was pretty simple to make but, 
+- The way it was made here is a bit complex
+- The working was as following:
+  - We already were provided with a dataset of questions in form of dictionary
+  - Then we went on creating a `Question()` object which would represent a single question
+  - After that we loaded up all those objects into a list and named it as `question_bank`
+  - Finally, we created a `QuizBrain()` to manage all the functioning of our game
+  - And that's how we completed our project.
+- While working, we did learn some important things like what we can actually access from an object when working with lists.
+  - This problem arose when we were trying to get the `text:` from the `Question()`object
