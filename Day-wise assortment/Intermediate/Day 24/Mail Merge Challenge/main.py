@@ -12,20 +12,20 @@
 with open("./Input/Letters/starting_letter.txt", "r") as letter:
     letter_lines = letter.readlines()  # Storing the lines as a list item
 
-# Initialising a temp_var
-letter_lines_with_name = []
-
 # Reading the name list
 with open("./Input/Names/invited_names.txt", "r") as names:
     names_list = names.readlines()  # Storing all the names as list items
 
 # Stripping the names and replacing them with '[name]'
 for i in names_list:  # Traversing through the names_list to strip the names separately
-    letter_lines_with_name.append(letter_lines[0].replace("[name]", i.strip()))
-    letter_lines_with_name.extend(letter_lines[1:])
+
+    # Changing the [name] in letter _lines with the stripped name
+    letter_lines[0] = letter_lines[0].replace("[name]", i.strip())
+
+    # Finally writing the Output to a file name.txt
     with open(f"./Output/ReadyToSend/{i.strip()}.txt", "w") as letters_ready:
-        for k in letter_lines_with_name:
+        for k in letter_lines:
             letters_ready.write(k)
 
-    # Setting the letter_lines_with_name = []
-    letter_lines_with_name = []
+    # Again changing the name back to [name] so that the first replace statement could work
+    letter_lines[0] = letter_lines[0].replace(i.strip(), "[name]")
