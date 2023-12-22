@@ -1,0 +1,2 @@
+Hello!! new file created.
+A line added using write method
