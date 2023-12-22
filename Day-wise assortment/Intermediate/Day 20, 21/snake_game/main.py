@@ -2,7 +2,7 @@ import time
 from snake import Snake
 from food import Food
 from score_board import ScoreBoard
-from turtle import Screen, Turtle
+from turtle import Screen
 
 # Initializing screen
 screen = Screen()
@@ -52,7 +52,6 @@ while game_is_on:
         # Extending the snake as it eats the food
         snake.extend()
         scoreboard.increase_score()
-        scoreboard.score_count += 1
 
     # Detect collision with wall
     if snake.snake_head.xcor() > 340 or snake.snake_head.xcor() < -340 or snake.snake_head.ycor() > 340 or snake.snake_head.ycor() < -360:

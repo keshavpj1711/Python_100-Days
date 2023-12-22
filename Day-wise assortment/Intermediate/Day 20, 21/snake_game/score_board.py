@@ -18,6 +18,8 @@ class ScoreBoard(Turtle):
     def increase_score(self):
         self.clear()  # We have to clear after every score update to get rid of overlap
         self.write(arg=f"Score: {self.score_count}", move=False, align="center", font=('Arial', 14, 'bold'))
+        # To increase the score here itself here rather than in main.py
+        self.score_count += 1
 
     def game_over(self):
         self.goto(0, 0)
