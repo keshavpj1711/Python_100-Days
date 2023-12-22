@@ -71,7 +71,7 @@ while game_is_on:
         snake.reset_snake()
 
     # Detect collision with tail
-    for segments in snake.snake[1:-1]:  # or we could have just used [1:] to get hold of list except the first element
+    for segments in snake.snake[1:]:  # or we could have just used [1:] to get hold of list except the first element
         if snake.snake_head.distance(segments) < 7:
             # game_is_on = False
             # scoreboard.game_over()
