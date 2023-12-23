@@ -24,7 +24,7 @@ class ScoreBoard(Turtle):
         # Calling update_score to show the increased score
         self.update_score()
 
-        # To increase the score here itself here rather than in main.py
+        # To increase the score here itself here rather than in learning_csv_module.py
         self.score_count += 1
 
     def update_score(self):
