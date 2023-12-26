@@ -77,3 +77,10 @@ while game_is_on:
 
 # This keeps the program ON
 screen.exitonclick()
+
+# # Angela used to filter the coords by doing
+# coords_data = states_data[states_data.state == user_input]
+# # The coords can be accessed by
+# x_coord = coords_data.x
+# y_coord = coords_data.y
+# # Then we could ask the turtle to go at given coords
