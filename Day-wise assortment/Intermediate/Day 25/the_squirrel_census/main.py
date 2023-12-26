@@ -43,7 +43,10 @@ fur_color_dict = {
 
 # To get the dict keys as a list
 fur_color_list = list(fur_color_dict.keys())
-print(fur_color_list)
+print(f"Fur Colors of squirrels: {fur_color_list}\n")
+
+# Creating a fur color list to create a database
+fur_color_count_list = []
 
 # To get the count of each fur color
 for i in primary_fur_color:
@@ -51,6 +54,17 @@ for i in primary_fur_color:
         if i == j:
             fur_color_dict[j]["count"] += 1
 
-print(fur_color_dict)
-fur_color_data = pandas.DataFrame(fur_color_dict)
+# adding the data to list
+for i in fur_color_list:
+    fur_color_count_list.append(fur_color_dict[i]["count"])
+
+# print(fur_color_dict)
+# print(fur_color_count_list)
+
+fur_color_data = {
+    "Fur Color": fur_color_list,
+    "Count": fur_color_count_list,
+}
+
+fur_color_data = pandas.DataFrame(fur_color_data)
 print(fur_color_data)
