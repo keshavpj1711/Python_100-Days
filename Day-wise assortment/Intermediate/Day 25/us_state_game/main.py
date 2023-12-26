@@ -62,6 +62,7 @@ while game_is_on:
             tt.write(arg=f"{user_input}", align="center", font=("Arial", 8, "normal"))
             tt.goto(0, 0)  # Again bringing back the turtle to origin
 
+            # Appending the user_input to user_input_list to keep track of input states
             user_input_list.append(user_input)
 
     else:
@@ -74,6 +75,18 @@ while game_is_on:
     # typing exit to exit out of loop
     if user_input == 'exit':
         game_is_on = False
+
+# Adding the save functionality
+# Opening the file to clear it first
+with open("states_to_learn.txt", "w") as states_to_learn:
+    states_to_learn.write("")
+# To output a csv file of all the states you were not able to guess
+with open("states_to_learn.txt", "a") as states_to_learn:
+    for state in states_name_list:
+        if state in user_input_list:
+            pass
+        else:
+            states_to_learn.write(f"{state}\n")
 
 # This keeps the program ON
 screen.exitonclick()
