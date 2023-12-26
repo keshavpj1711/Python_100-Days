@@ -68,3 +68,25 @@ fur_color_data = {
 
 fur_color_data = pandas.DataFrame(fur_color_data)
 print(fur_color_data)
+
+
+# Angela's Method
+# print("")
+# grey_squirrel_count = len(squirrel_census[squirrel_census["Primary Fur Color"] == "Gray"])
+# cinnamon_squirrel_count = len(squirrel_census[squirrel_census["Primary Fur Color"] == "Cinnamon"])
+# black_squirrel_count = len(squirrel_census[squirrel_census["Primary Fur Color"] == "Black"])
+# print(grey_squirrel_count, cinnamon_squirrel_count, black_squirrel_count)
+
+# The concept behind using square brackets this way
+
+# Inner Square Brackets:
+# a. squirrel_census["Primary Fur Color"] == "Black" is a conditional expression that,
+# compares each value in the "Primary Fur Color" column with the value "Black".
+# b. This results in a Boolean Series with the same length as the DataFrame,
+# where each element is either True (if the corresponding color is "Black") or False (if it's not).
+
+# Outer Square Brackets:
+# a. squirrel_census[...] is the key part for filtering.
+# It uses the Boolean Series within it as a mask to select rows from the DataFrame.
+# b. When a Boolean Series is used in this way, pandas interpret it as
+# "keep only the rows where the corresponding value in the Boolean Series is True."
