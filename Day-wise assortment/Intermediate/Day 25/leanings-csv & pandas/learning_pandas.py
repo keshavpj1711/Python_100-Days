@@ -62,3 +62,18 @@ print(tue_report)
 max_day_report = weather_report_data[weather_report_data.temp == weather_report_data.temp.max()]
 print("\nReport for day with max temp")
 print(max_day_report)
+print("")
+
+# Creating a Dataframe
+# Let say we need to create the same report but for temp as Fahrenheit
+student_data = {
+    "students": ["Rahul", "Keshav", "Priya"],
+    "scores": [76, 53, 52],
+}
+pandas_data = pandas.DataFrame(student_data)
+print(pandas_data)
+# This can then be changed to a csv file and saved
+pandas_data.to_csv("student_data.csv")
+
+
+
