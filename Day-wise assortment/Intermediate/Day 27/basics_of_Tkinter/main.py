@@ -29,13 +29,23 @@ my_label["text"] = "Changed the label"
 
 # Creating a button
 button = tk.Button(text="Click Me", command=button_clicked)
-button.pack(side="top")
+button.pack(pady=5)
 # Currently this button does nothing
 # To make it functional we will make use of the command argument
 
 # Creating an entry component to our program
 user_input = tk.Entry(width=20)
 user_input.pack()
+
+
+# Getting to know, Tkinter Layout Manager
+# Pack - Not able to specify a certain position on the
+# Place - Placing the widgets wrt to coordinate system considering (0, 0) at the top left, a bit more specific
+# Grid - Look at the code to see how it works
+# my_label.grid(column=2, row=1)
+# button.grid(column=2, row=2)
+# user_input.grid(column=2, row=3)
+
 
 # Keeping our windows open
 # This is to be kept at the end of the program
@@ -45,3 +55,5 @@ tk.mainloop()
 # window, window size
 # label, packer method
 # button and entry
+
+
