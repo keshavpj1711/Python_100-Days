@@ -12,18 +12,61 @@ FONT_NAME2 = "Courier"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
+reps = 0
+timer = None
 
 
 # ---------------------------- TIMER RESET ------------------------------- #
+def reset_timer():
+    global timer, reps
+
+    # Resetting to initial conditions of our pomodoro
+    timer_label.config(text="Timer", fg=GREEN)
+    reps = 0  # Resetting all sessions
+    check_marks.config(text="")
+    # Resetting our displayed timer
+    canvas.itemconfig(timer_text, text="00:00")
+
+    # Now first thing that we need to do is cancel our timer
+    # This is done using window.after_cancel()
+    # This takes a variable, so we need to assign our window.after() to a variable
+    window.after_cancel(timer)
+
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 def start_timer():
+    global reps
+    session = 0
+
+    work_sec = WORK_MIN*60
+    short_break_sec = SHORT_BREAK_MIN*60
+    long_break_sec = LONG_BREAK_MIN*60
+
+    if reps % 7 == 0 and reps > 0:
+        print("\nLong Break")
+        timer_label["text"] = "Break"
+        timer_label["fg"] = RED
+        # Both the changes with timer_label can be done with timer_label.config(text=, fg=)
+        session = long_break_sec
+        check_marks["text"] += checkbox
+
+    elif reps % 2 != 0:
+        print("\nShort Break")
+        timer_label["text"] = "Break"
+        timer_label["fg"] = PINK
+        session = short_break_sec
+        check_marks["text"] += checkbox
+
+    else:
+        print("\nWork")
+        timer_label["text"] = "Work"
+        timer_label["fg"] = GREEN
+        session = work_sec
+
+    reps += 1
+
     # Calling count_down()
-    count_down(100)
-
-
-def reset_timer():
-    pass
+    count_down(session)
 
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
@@ -40,7 +83,6 @@ def reset_timer():
 # to tackle this problem, tkinter already has a built-in method window.after()
 # what this does is after a certain mili-seconds we can call a program
 def count_down(count):
-    print(count)
     # timer_text["text"] = f"{count}" this method doesn't work if you are working with a canvas widget
     # To work with canvas elements
 
@@ -49,10 +91,7 @@ def count_down(count):
     count_sec = count % 60
 
     # Using the dynamically typed functionality of python
-    if count_sec == 0:
-        count_sec = "00"
-
-    elif count_sec < 10:
+    if count_sec < 10:
         count_sec = f"0{count_sec}"
 
     if count_min < 10:
@@ -60,7 +99,10 @@ def count_down(count):
 
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
     if count > 0:
-        window.after(1000, count_down, count - 1)  # This count-1 is passed on to count_down()
+        global timer
+        timer = window.after(1000, count_down, count - 1)  # This count-1 is passed on to count_down()
+    else:
+        start_timer()  # We need this so that as soon as work session gets over the break starts
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -89,12 +131,12 @@ start_button = Button(text="Start", bg="white", pady=5, padx=5, highlightthickne
 start_button.grid(column=0, row=2)
 
 # Creating our reset button
-reset_button = Button(text="Reset", bg="white", pady=5, padx=5, highlightthickness=0)
+reset_button = Button(text="Reset", bg="white", pady=5, padx=5, highlightthickness=0, command=reset_timer)
 reset_button.grid(column=2, row=2)
 
 # Creating our checkbox
 checkbox = "✔"
-check_marks = Label(text=checkbox, fg=GREEN, bg=YELLOW, font=(FONT_NAME2, 15, "bold"), pady=10)
+check_marks = Label(text="", fg=GREEN, bg=YELLOW, font=(FONT_NAME2, 15, "bold"), pady=10)
 check_marks.grid(column=1, row=3)
 
 window.mainloop()
