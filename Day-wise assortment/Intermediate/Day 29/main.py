@@ -2,6 +2,7 @@ from tkinter import *  # This only imports all the classes present in tkinter
 # Now, to use messagebox which is just a module, we need to import it separately
 from tkinter import messagebox
 from password_generator import py_password_gen
+import pyperclip  # This module is to achieve the copy and paste functionality
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -10,6 +11,7 @@ def gen_pass():
     password = password_obj.generate_password()
     password_entry.delete(0, END)
     password_entry.insert(0, string=password)
+    pyperclip.copy(password)
 
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
