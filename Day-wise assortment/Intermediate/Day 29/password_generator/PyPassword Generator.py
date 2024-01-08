@@ -2,41 +2,46 @@
 import random
 import generator as gen
 
-# Greetings for our program
-print("Welcome to PyPassword Generator")
-num_of_letters = random.randint(8, 10)
-num_of_symbol = random.randint(2, 4)
-num_of_numbers = random.randint(2, 4)
 
-total_len = num_of_symbol + num_of_numbers + num_of_letters
+class PasswordGen:
 
-# Doing the easy level
-# letterssymbolnumbers
+    def __init__(self):
+        self.num_of_letters = random.randint(8, 10)
+        self.num_of_symbol = random.randint(2, 4)
+        self.num_of_numbers = random.randint(2, 4)
 
-# Easy Level
-Your_password = ""
-for i in range(0, num_of_letters):
-    # rand_int = random.randint(0, len(gen.letters_list)-1)
-    # Your_password += gen.letters_list[rand_int]
-    Your_password += random.choice(gen.letters_list)
+        self.total_len = self.num_of_symbol + self.num_of_numbers + self.num_of_letters
 
-for i in range(0, num_of_symbol):
-    # rand_int = random.randint(0, len(gen.symbols_list)-1)
-    # Your_password += gen.symbols_list[rand_int]
-    Your_password += random.choice(gen.symbols_list)
+        self.Your_password = ""
 
+    def generate_password(self):
+        # Doing the easy level
+        # letterssymbolnumbers
 
-for i in range(0, num_of_numbers):
-    # rand_int = random.randint(0, len(gen.nums_list)-1)
-    # Your_password += gen.nums_list[rand_int]
-    Your_password += random.choice(gen.nums_list)
+        # Easy Level
 
-# Instead of assigning it this way we can also use
-# random.choice(gen.letters_list)
+        for i in range(0, self.num_of_letters):
+            # rand_int = random.randint(0, len(gen.letters_list)-1)
+            # Your_password += gen.letters_list[rand_int]
+            self.Your_password += random.choice(gen.letters_list)
 
-# Final Password & Hard Level incorporated
-Your_password = "".join(random.sample(Your_password, len(Your_password)))
-print(f"Generated Password: {Your_password}")
+        for i in range(0, self.num_of_symbol):
+            # rand_int = random.randint(0, len(gen.symbols_list)-1)
+            # Your_password += gen.symbols_list[rand_int]
+            self.Your_password += random.choice(gen.symbols_list)
+
+        for i in range(0, self.num_of_numbers):
+            # rand_int = random.randint(0, len(gen.nums_list)-1)
+            # Your_password += gen.nums_list[rand_int]
+            self.Your_password += random.choice(gen.nums_list)
+
+        # Instead of assigning it this way we can also use
+        # random.choice(gen.letters_list)
+
+        # Final Password & Hard Level incorporated
+        # So basically this does is, shuffle each and every element of string
+        self.Your_password = "".join(random.sample(self.Your_password, len(self.Your_password)))
+        # print(f"Generated Password: {self.Your_password}")
 
 # Well other way of incorporating Hard Level is that
 # First we need to convert our Easy Level password to a list
