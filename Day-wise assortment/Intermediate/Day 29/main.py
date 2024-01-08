@@ -1,9 +1,16 @@
 from tkinter import *  # This only imports all the classes present in tkinter
 # Now, to use messagebox which is just a module, we need to import it separately
 from tkinter import messagebox
+from password_generator import py_password_gen
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+def gen_pass():
+    password_obj = py_password_gen.PasswordGen()
+    password = password_obj.generate_password()
+    password_entry.delete(0, END)
+    password_entry.insert(0, string=password)
+
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 # Saving our details in database.txt
@@ -21,7 +28,8 @@ def save_details():
     else:
         # Checking if user really wants to proceed
         # This is_ok is gonna save ok as true and cancel as false
-        is_ok = messagebox.askokcancel(title=website, message=f"Email: {email}\nPassword: {password}\nDo you wish to save?")
+        is_ok = messagebox.askokcancel(title=website,
+                                       message=f"Email: {email}\nPassword: {password}\nDo you wish to save?")
 
         if is_ok and is_filled:
             with open("database.txt", "a") as database:
@@ -72,7 +80,7 @@ password_entry.grid(column=1, row=3)
 
 # Creating our buttons
 generate_button = Button(text="Generate Password", highlightthickness=0, bg="white", borderwidth=1,
-                         activebackground="dodgerblue", activeforeground="white")
+                         activebackground="dodgerblue", activeforeground="white", command=gen_pass)
 generate_button.grid(column=2, row=3)
 add_button = Button(text="Add", width=46, highlightthickness=0, bg="white", borderwidth=1,
                     activebackground="dodgerblue", activeforeground="white", command=save_details)
