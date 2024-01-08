@@ -20,4 +20,7 @@ Even though the project may not be so useful at this point, but this can actuall
   - Even if you have done this `from tkinter import *` still you have to separately import it
 - To know how messagebox works see here - [Link](https://docs.python.org/3/library/tkinter.messagebox.html)
 
+## Generating random password
 
+- Now, to add random password generating functionality, we used the code that we created on Day 5.
+- We also made slight changes to the py_password_generator by using the concept of classes
