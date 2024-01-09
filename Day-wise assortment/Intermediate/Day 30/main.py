@@ -21,4 +21,20 @@ else:
 
 # Finally: this block runs no matter what happens
 finally:
+    # Raising your own errors
+    # To do this we use the keyword raise followed by the error_code("and the error message")
+    # raise TypeError("This is a error message")
+    # Now to see when can this raising our own exceptions be helpful
+    # To get an example checkout raising_exceptions.py
+
     print("Program execution completed")
+
+# Doubt: One thing to note is that,
+# The error message prints on the screen even before the else block
+# Like this:
+# Traceback (most recent call last):
+#   File "D:\My Journey\Python - Road to Heaven\Day-wise assortment\Intermediate\Day 30\main.py", line 26, in <module>
+#     raise TypeError("This is a error message")
+# TypeError: This is a error message
+# Zero errors!!
+
