@@ -40,9 +40,10 @@ name = name.replace(" ", "")  # To remove any whitespaces to avoid any error in 
 while True:
     try:
         your_name_phonetics = [phonetics_dict[alpha] for alpha in name]
-        print(your_name_phonetics)
-        break
     except KeyError:
         print("Please Enter a valid name")
         name = (input("Enter your name: ")).upper()
         name = name.replace(" ", "")  # To remove any whitespaces to avoid any error in your_name_dict
+    else:
+        print(your_name_phonetics)
+        break
