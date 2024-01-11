@@ -4,10 +4,23 @@ from tkinter import messagebox
 from password_generator import py_password_gen
 import pyperclip  # This module is to achieve the copy and paste functionality
 import json  # Importing json module to add and get data from json file
+
+
 # Also we are making a change to saving the data
 # Now we will be saving data in json file instead of txt file
 # Reason being it's easier to work with data when it's in json rather than in txt file
 
+
+# ---------------------------- SEARCH WEBSITE ------------------------------- #
+def search():
+    email = None
+    password = None
+    with open("database.json", "r") as database:
+        data = json.load(database)
+        email = data[f"{website_entry.get()}"]["email"]
+        password = data[f"{website_entry.get()}"]["password"]
+
+    messagebox.showinfo(title=f"{website_entry.get()}", message=f"Email: {email}\nPassword: {password}")
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def gen_pass():
@@ -93,8 +106,8 @@ password_label = Label(text="Password:", pady=5, bg="white")
 password_label.grid(column=0, row=3)
 
 # Creating our entries
-website_entry = Entry(width=54, highlightcolor="dodgerblue", highlightthickness=1)
-website_entry.grid(column=1, row=1, columnspan=2)
+website_entry = Entry(width=35, highlightcolor="dodgerblue", highlightthickness=1)
+website_entry.grid(column=1, row=1, columnspan=1)
 # Having the cursor already in the first entry
 website_entry.focus()
 email_username_entry = Entry(width=54, highlightcolor="dodgerblue", highlightthickness=1)
@@ -105,6 +118,9 @@ password_entry = Entry(width=35, highlightcolor="dodgerblue", highlightthickness
 password_entry.grid(column=1, row=3)
 
 # Creating our buttons
+search_button = Button(text="Search", highlightthickness=0, bg="white", borderwidth=1,
+                       activebackground="dodgerblue", activeforeground="white", width=14, command=search)
+search_button.grid(column=2, row=1)
 generate_button = Button(text="Generate Password", highlightthickness=0, bg="white", borderwidth=1,
                          activebackground="dodgerblue", activeforeground="white", command=gen_pass)
 generate_button.grid(column=2, row=3)
