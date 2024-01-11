@@ -68,6 +68,8 @@ def save_details():
             try:
                 # One problem we might face is if the file is not there
                 # We will encounter a file not found error
+                # Another one is if a person types in a website name which is not in the database
+                # We will encounter a key error
                 with open("database.json", "r") as database:
                     # Reading the data from data
                     data = json.load(database)
