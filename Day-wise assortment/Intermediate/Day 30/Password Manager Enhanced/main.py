@@ -9,6 +9,9 @@ import json  # Importing json module to add and get data from json file
 # Also we are making a change to saving the data
 # Now we will be saving data in json file instead of txt file
 # Reason being it's easier to work with data when it's in json rather than in txt file
+# One problem which arises due to data storage in json file type is
+# We can't enter two accounts for same website name, the reason being since the data is of dictionary type and,
+# we can't have two keys having the same name
 
 
 # ---------------------------- SEARCH WEBSITE ------------------------------- #
@@ -25,6 +28,10 @@ def search():
 
     except FileNotFoundError:
         messagebox.showerror(title="Error", message="Database not created, add at least one account")
+
+    except KeyError:
+        messagebox.showerror(title="Error", message="No accounts found for this website")
+
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def gen_pass():
@@ -72,7 +79,6 @@ def save_details():
                     json.dump(new_data, database, indent=4)
 
             else:
-                print("Else block executed")
                 with open("database.json", "w") as database:
                     # Saving the data
                     json.dump(data, database, indent=4)
