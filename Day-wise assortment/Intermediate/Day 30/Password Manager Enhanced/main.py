@@ -15,12 +15,16 @@ import json  # Importing json module to add and get data from json file
 def search():
     email = None
     password = None
-    with open("database.json", "r") as database:
-        data = json.load(database)
-        email = data[f"{website_entry.get()}"]["email"]
-        password = data[f"{website_entry.get()}"]["password"]
+    try:
+        with open("database.json", "r") as database:
+            data = json.load(database)
+            email = data[f"{website_entry.get()}"]["email"]
+            password = data[f"{website_entry.get()}"]["password"]
 
-    messagebox.showinfo(title=f"{website_entry.get()}", message=f"Email: {email}\nPassword: {password}")
+        messagebox.showinfo(title=f"{website_entry.get()}", message=f"Email: {email}\nPassword: {password}")
+
+    except FileNotFoundError:
+        messagebox.showerror(title="Error", message="Database not created, add at least one account")
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def gen_pass():
