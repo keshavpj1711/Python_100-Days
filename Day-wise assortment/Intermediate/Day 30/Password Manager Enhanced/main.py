@@ -40,12 +40,31 @@ def save_details():
 
     else:
         if is_filled:
-            with open("database.json", "w") as database:
-                json.dump(new_data, database)
 
-            # Clearing previous entries after adding to files
-            website_entry.delete(0, END)
-            password_entry.delete(0, END)
+            try:
+                # One problem we might face is if the file is not there
+                # We will encounter a file not found error
+                with open("database.json", "r") as database:
+                    # Reading the data from data
+                    data = json.load(database)
+                    # Updating the old data with new data
+                    data.update(new_data)
+
+            except FileNotFoundError:
+                with open("database.json", "w") as database:
+                    json.dump(new_data, database, indent=4)
+
+            else:
+                print("Else block executed")
+                with open("database.json", "w") as database:
+                    # Saving the data
+                    json.dump(data, database, indent=4)
+                    # Working of indent:
+
+            finally:
+                # Clearing previous entries after adding to files
+                website_entry.delete(0, END)
+                password_entry.delete(0, END)
 
         else:
             return None
