@@ -3,6 +3,10 @@ from tkinter import *  # This only imports all the classes present in tkinter
 from tkinter import messagebox
 from password_generator import py_password_gen
 import pyperclip  # This module is to achieve the copy and paste functionality
+import json  # Importing json module to add and get data from json file
+# Also we are making a change to saving the data
+# Now we will be saving data in json file instead of txt file
+# Reason being it's easier to work with data when it's in json rather than in txt file
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -21,6 +25,13 @@ def save_details():
     email = email_username_entry.get()
     password = password_entry.get()
     is_filled = True
+    # Creating a dictionary to be saved to database.json
+    new_data = {
+        website: {
+            "email": email,
+            "password": password,
+        }
+    }
 
     # Checking if any of the fields is empty:
     if len(website) == 0 or len(email) == 0 or len(password) == 0:
@@ -28,15 +39,9 @@ def save_details():
         is_filled = False
 
     else:
-        # Checking if user really wants to proceed
-        # This is_ok is gonna save ok as true and cancel as false
-        is_ok = messagebox.askokcancel(title=website,
-                                       message=f"Email: {email}\nPassword: {password}\nDo you wish to save?")
-
-        if is_ok and is_filled:
-            with open("database.txt", "a") as database:
-                database.write(f"{website} | {email} | {password}")
-                database.write("\n")
+        if is_filled:
+            with open("database.json", "w") as database:
+                json.dump(new_data, database)
 
             # Clearing previous entries after adding to files
             website_entry.delete(0, END)
