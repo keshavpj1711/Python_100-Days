@@ -14,12 +14,7 @@ random_word = {}
 # What is think of how I should save progress is saving the words that you already know in a file
 # And deleting the ones from the main list
 def known_word():
-    data_file_list.remove(random_word)
-    data = pandas.DataFrame(data_file_list)
-    data.to_csv("./data/words_to_learn.csv")
-
-    change_card()
-
+    pass
 
 
 # ------------------------- TURNING CARDS -------------------------
