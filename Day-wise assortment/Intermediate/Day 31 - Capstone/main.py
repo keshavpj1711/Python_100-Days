@@ -10,6 +10,18 @@ BACKGROUND_COLOR = "#B1DDC6"
 random_word = {}
 
 
+# ------------------------- SAVING PROGRESS -------------------------
+# What is think of how I should save progress is saving the words that you already know in a file
+# And deleting the ones from the main list
+def known_word():
+    data_file_list.remove(random_word)
+    data = pandas.DataFrame(data_file_list)
+    data.to_csv("./data/words_to_learn.csv")
+
+    change_card()
+
+
+
 # ------------------------- TURNING CARDS -------------------------
 def turn_card():
     canvas.itemconfig(card_image, image=card_back_image)
@@ -35,6 +47,9 @@ def change_card():
     # Flipping the cards
     flip_timer = window.after(3000, turn_card)
 
+    # Adding the learnt words to learnt_words.csv
+    known_word()
+
 
 # ------------------------- CREATING UI -------------------------
 # Configuring our window
@@ -59,7 +74,7 @@ text_word = canvas.create_text(400, 285, font=("Arial", 60, "bold"), text="")
 right_image = PhotoImage(file="images/right.png")
 wrong_image = PhotoImage(file="images/wrong.png")
 # Creating right and wrong buttons
-right_button = Button(image=right_image, highlightthickness=0, borderwidth=0, command=change_card)
+right_button = Button(image=right_image, highlightthickness=0, borderwidth=0, command=known_word)
 right_button.grid(column=1, row=1)
 wrong_button = Button(image=wrong_image, highlightthickness=0, borderwidth=0, command=change_card)
 wrong_button.grid(column=0, row=1)
