@@ -7,10 +7,18 @@
 # 4. Use the smtplib to send the email to yourself.
 
 import datetime as dt
+import random
 import smtplib
 
 
 # Here we will be writing a function that returns a random quote from quote.txt
+def get_quote():
+    with open("quotes.txt", "r") as quotes:
+        content = quotes.readlines()
+        # Getting a random line from quotes.txt
+        random_quote = content[random.randint(0, 101)]
+
+        return random_quote
 
 
 # Checking for weekday to be Wednesday
@@ -21,5 +29,6 @@ week_day = now.weekday()
 
 if week_day == 2:
     print("Today's Wednesday")
+    todays_quote = get_quote()
 else:
     pass
