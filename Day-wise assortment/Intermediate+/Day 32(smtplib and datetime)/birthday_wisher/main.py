@@ -8,11 +8,12 @@
 # 4. Send the letter generated in step 3 to that person's email address.
 
 import smtplib
-import datetime
+import datetime as dt
 import pandas as pd
+import random
 
 
-def send_msg():
+def send_msg(wish, name, msg):
     # Initialising my email
     my_email = "test.user.python0520@gmail.com"
     my_password = "ezyjbzaszosbhner"
@@ -29,8 +30,29 @@ def send_msg():
         connection.sendmail(
             from_addr=my_email,
             to_addrs="crueser123@gmail.com",
-            msg="Subject:Hello\n\nHi, this is my first msg using the SMTP module.")
+            msg=f"Subject:{wish} {name}\n\n{msg}")
 
 
 # Opening and checking the file
 birthday_data = pd.read_csv("birthdays.csv")
+email_column = birthday_data["email"]
+name_column = birthday_data["name"]
+year_column = birthday_data["year"]
+month_column = birthday_data["month"]
+day_column = birthday_data["day"]
+
+
+now = dt.datetime.now()
+year = now.year
+month = now.month
+day = now.day
+
+
+# Random Number
+random_no = random.randint(1, 3)
+
+with open(f"letter_templates/letter_{random_no}.txt") as letter_format:
+    letter = letter_format.read()
+
+for i in birthday_data:
+    pass
