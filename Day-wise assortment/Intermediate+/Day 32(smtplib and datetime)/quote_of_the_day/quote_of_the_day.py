@@ -21,14 +21,35 @@ def get_quote():
         return random_quote
 
 
+# Defining a function to send sms with msg as input
+def send_quote(msg):
+    # Initialising my email
+    my_email = "test.user.python0520@gmail.com"
+    my_password = "ezyjbzaszosbhner"
+
+    # Creating an obj that establishes connection with the mail server
+    with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
+        # Starting TLS - Transport Layer Security, it's a way of securing connection with the mail server
+        # Reason: So that no one can intercept our message, since tls encrypts our message
+        connection.starttls()
+
+        # Logging in
+        connection.login(user=my_email, password=my_password)
+        # Sending the message
+        connection.sendmail(
+            from_addr=my_email,
+            to_addrs="crueser123@gmail.com",
+            msg=f"Subject:Monday Starters\n\n{msg}")
+
+
 # Checking for weekday to be Wednesday
 # Getting the current info
 now = dt.datetime.now()
 # Getting today's weekday
 week_day = now.weekday()
 
-if week_day == 2:
-    print("Today's Wednesday")
+if week_day == 0:
     todays_quote = get_quote()
+    send_quote(todays_quote)
 else:
     pass
