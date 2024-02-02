@@ -4,7 +4,7 @@ import pandas as pd
 import random
 
 
-def send_msg(wish, msg):
+def send_msg(wish, msg, email):
     # Initialising my email
     my_email = "test.user.python0520@gmail.com"
     my_password = "ezyjbzaszosbhner"
@@ -20,7 +20,7 @@ def send_msg(wish, msg):
         # Sending the message
         connection.sendmail(
             from_addr=my_email,
-            to_addrs="crueser123@gmail.com",
+            to_addrs=f"{email}",
             msg=f"Subject:{wish}\n\n{msg}")
 
 
@@ -59,5 +59,5 @@ for index, row in birthday_data.iterrows():
         letter = letter.replace("[NAME]", name)
         # print(letter)
 
-        send_msg("Happy Birthday", letter)
+        send_msg("Happy Birthday", letter, row["email"])
 
