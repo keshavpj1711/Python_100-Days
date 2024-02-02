@@ -29,7 +29,6 @@ birthday_data = pd.read_csv("birthdays.csv")
 
 # Getting today's info
 now = dt.datetime.now()
-year = now.year
 month = now.month
 day = now.day
 
@@ -53,7 +52,7 @@ for index, row in birthday_data.iterrows():
         letter = letter_format.read()
 
     # Checking if today is a birthday or not
-    if [day, month, year] == [row["day"], row["month"], row["year"]]:
+    if [day, month] == [row["day"], row["month"]]:
         # Getting the name on the letter
         name = row["name"]
         letter = letter.replace("[NAME]", name)
