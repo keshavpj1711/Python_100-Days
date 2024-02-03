@@ -16,3 +16,11 @@ you just can't rush into the kitchen and take anything you want.
 API Endpoints are specific urls that acts as doors for specific features of an API.\
 For Example, api endpoint in our **ISS Current Location App** was ``.
 
+# What is an API Request?
+
+API Requests: The Essence of Communication Between Applications\
+It is essentially a message sent from one application (the client) to another 
+application (the server or API provider) in order to access data, perform an action, 
+or trigger a specific functionality.
+
+
