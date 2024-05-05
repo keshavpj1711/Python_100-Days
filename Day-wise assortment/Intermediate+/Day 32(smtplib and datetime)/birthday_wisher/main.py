@@ -60,3 +60,6 @@ for index, row in birthday_data.iterrows():
 
         send_msg("Happy Birthday", letter, row["email"])
 
+        # Sending a confirmation mail to myself
+        send_msg("Confirmation Mail", f"Birthday wish sent to {name}.", "crueser123@gmail.com")
+
