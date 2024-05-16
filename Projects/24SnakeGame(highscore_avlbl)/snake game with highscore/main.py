@@ -2,6 +2,7 @@ import time
 from snake import Snake
 from food import Food
 from score_board import ScoreBoard
+from border import Border
 from turtle import Screen
 
 
@@ -25,6 +26,8 @@ screen.title("Snake Game - Nokia 3310")
 # Stoping the tracing
 screen.tracer(0)
 
+# Creating a border 
+border = Border()
 # Creating our snake
 snake = Snake()
 # Initializing food
