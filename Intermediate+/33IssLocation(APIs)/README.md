@@ -25,6 +25,11 @@ It is essentially a message sent from one application (the client) to another
 application (the server or API provider) in order to access data, perform an action, 
 or trigger a specific functionality.
 
+## API Parameters
+
+Sometimes to get the required response we need to pass some parameters during api calls.
+These parameters are basically called API Parameters. See how it is used in ./ISS_overhead_notif/main.py
+
 
 # HTTP Codes 
 
