@@ -37,3 +37,5 @@ When accessing the info on the web, you can actually see what is going on or wha
 - 5XX - The Server screwed up 
 
 For eg: 404 is the most common you might have encountered when accessing pages that are not present.
+
+> Get more info about HTTP Status Codes [here](https://www.webfx.com/web-development/glossary/http-status-codes/)
