@@ -18,3 +18,6 @@ iss_pos_latitude = iss_pos["latitude"]
 iss_pos_longitude = iss_pos["longitude"]
 
 print(f"Current ISS position is \nLatitude: {iss_pos_latitude}\nLongitude: {iss_pos_longitude}")
+
+# Additional tool to get position on the map
+print("To get the position on the map use a tool like: \nlatlong.net")
