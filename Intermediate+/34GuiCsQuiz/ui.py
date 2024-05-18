@@ -35,6 +35,8 @@ class QuizGUI:
         # Calling next question
         self.get_next_question()
 
+        # Remember every code to be run should be above this line 
+        # Since mainloop() runs till the tk window is killed
         self.window.mainloop()
 
     
@@ -42,38 +44,44 @@ class QuizGUI:
 
         if self.quiz_brain.question_number < 10: # According to indexing
             # Basically here we will also update the score everytime
+            # Reason, since this function is called again and again(indirectly) when button clicked
             self.score_label.configure(text=f"Score:{self.quiz_brain.user_score}")
 
-            q_text = self.quiz_brain.next_question()[0] 
-            # Since this returns list with question at 0 as well as ans at 1 index
+            q_text = self.quiz_brain.next_question()
 
             # Changing text in canvas
             self.question_space.itemconfig(self.question_text, text=f"{q_text}")
 
         else:
+            # Showing the Final Score in the label
             self.score_label.configure(text=f"Final Score:{self.quiz_brain.user_score}")
 
+            # This msg is to be printed on the canvas
             self.question_space.itemconfig(self.question_text, text="Quiz Completed")
 
             # And next thing we want to do is disable those buttons
+            # So the screen doesn't flashes when we click the buttons
             self.false_button.config(state="disabled")
             self.true_button.config(state="disabled")
 
+    # To be called when TRUE button is clicked
     def true_clicked(self):
         if self.quiz_brain.check_answer("T") == 1:
             self.flash_screen_color("light green")
         else:
             self.flash_screen_color("red")
-
+    # To be called when FALSE button is clicked
     def false_clicked(self):
         if self.quiz_brain.check_answer("F") == 1:
             self.flash_screen_color("light green")
         else:
             self.flash_screen_color("red")
 
+    # To flash the screen with passed color
     def flash_screen_color(self, color_to_flash):
         self.question_space.configure(bg=f"{color_to_flash}")
-        self.window.after(500, self.set_screen)
+        self.window.after(500, self.set_screen) 
+        # just waiting our 0.5s to get to new question
 
     # This function basically sets the screen for new question
     def set_screen(self):

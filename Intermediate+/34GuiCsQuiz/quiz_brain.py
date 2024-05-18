@@ -16,7 +16,7 @@ class QuizBrain:
         self.q_ans = self.current_question[1]
         # self.user_choice = input(f"Q{self.question_number+1}. {self.q_text} (T/F)?: ")
         self.question_number += 1
-        return self.current_question
+        return self.q_text
 
     def check_answer(self, choice):
         if self.current_question[1][0] == choice:
