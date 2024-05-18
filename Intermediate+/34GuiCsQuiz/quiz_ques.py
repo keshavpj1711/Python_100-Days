@@ -1,10 +1,23 @@
 # This is where we will get the response of the api
+# Here we took the response and stored all the questions in questions[]
 
 import requests
 
-response = requests.get(url="https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=boolean")
-# For handling any error
-response.raise_for_status()
+class GetQuestions:
+    
+    def __init__(self):
 
-# Getting the data 
-questions = response.json()
+        response = requests.get(url="https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=boolean")
+        # For handling any error
+        response.raise_for_status()
+
+        # Getting the data 
+        question_list = response.json()["results"]
+        # print(question_list)
+
+        questions = []
+
+        # Looping thru question_list and populating questions with question and correct answer
+        for i in range(0, len(question_list)-1):
+            questions.append([question_list[i]["question"], question_list[i]["correct_answer"]])
+            # print(questions[i])
