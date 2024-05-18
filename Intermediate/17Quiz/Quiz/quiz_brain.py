@@ -23,7 +23,7 @@ class QuizBrain:
             return True
 
     def check_correct(self):
-        current_question = self.question_list[self.question_number]
+        current_question = self.question_list[self.question_number-1]
         if self.user_choice == current_question.q_answer[0]:
             self.user_score += 1
         else:
