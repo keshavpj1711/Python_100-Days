@@ -20,7 +20,7 @@ class QuizBrain:
 
     def check_answer(self, choice):
         if self.current_question[1][0] == choice:
-            # self.user_score += 1
+            self.user_score += 1
             return 1
         else:
             return 0

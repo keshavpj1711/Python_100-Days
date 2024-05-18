@@ -45,14 +45,19 @@ class QuizGUI:
 
     def true_clicked(self):
         if self.quiz_brain.check_answer("T") == 1:
-            self.quiz_brain.user_score += 1
-            print("Correct Ans")
+            self.flash_screen_color("light green")
         else:
-            print("Wrong Ans")
+            self.flash_screen_color("red")
 
     def false_clicked(self):
         if self.quiz_brain.check_answer("F") == 1:
-            self.quiz_brain.user_score += 1
-            print("Correct Ans")
+            self.flash_screen_color("light green")
         else:
-            print("Wrong Ans")
+            self.flash_screen_color("red")
+
+    def flash_screen_color(self, color_to_flash):
+        self.question_space.configure(bg=f"{color_to_flash}")
+        self.window.after(500, self.set_screen_color)
+
+    def set_screen_color(self):
+        self.question_space.configure(bg="white")
