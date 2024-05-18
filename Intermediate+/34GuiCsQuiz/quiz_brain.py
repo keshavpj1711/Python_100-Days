@@ -8,12 +8,16 @@ class QuizBrain:
         self.user_score = 0
         self.user_choice = ""
         self.current_question = [] 
+        self.questions_remaining = len(question_list)
         # the data stored will be of format [question, correct answer]
 
     def next_question(self):
         self.current_question = self.question_list[self.question_number]
-        # self.user_choice = # getting the choice via tkinter button
+        self.q_text = self.current_question[0]
+        self.q_ans = self.current_question[1]
+        self.user_choice = input(f"Q{self.question_number+1}. {self.q_text} (T/F)?: ")
         self.question_number += 1
+        self.questions_remaining -= 1
 
     def check_answer(self):
         if self.current_question[1][0] == self.user_choice:
@@ -22,5 +26,4 @@ class QuizBrain:
             pass
     
     def show_score(self):
-        # Calling function of gui to update the score
-        pass
+        print(f"Your score is ({self.user_score}/{len(self.question_list)})")
