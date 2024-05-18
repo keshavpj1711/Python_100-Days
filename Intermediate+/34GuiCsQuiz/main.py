@@ -2,5 +2,7 @@
     # Getting hold of api 
     # Next we need to revise Tkinter and 
     
+from quiz_ques import GetQuestions
+
 
 
