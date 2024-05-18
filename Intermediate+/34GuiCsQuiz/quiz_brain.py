@@ -18,11 +18,12 @@ class QuizBrain:
         self.question_number += 1
         return self.current_question
 
-    def check_answer(self):
-        if self.current_question[1][0] == self.user_choice:
-            self.user_score += 1
+    def check_answer(self, choice):
+        if self.current_question[1][0] == choice:
+            # self.user_score += 1
+            return 1
         else:
-            pass
+            return 0
     
     def show_score(self):
         print(f"Your score is ({self.user_score}/{len(self.question_list)})")
