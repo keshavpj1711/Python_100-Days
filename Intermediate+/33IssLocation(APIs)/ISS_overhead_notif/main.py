@@ -1,12 +1,28 @@
 import requests
 from datetime import datetime
+import smtplib
 
 MY_LAT = 28.644800
 MY_LNG = 77.216721
 
-def sendsms(email):
+def sendsms(reciever_email):
     # Basically this function sends and ISS Overhead Notification to the input email
-    pass
+    
+    # Setting up connection to send email
+    my_email = "test.user.python0520@gmail.com"
+    my_password = "ayqkjzzlvconjyqk"
+
+    with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
+        # Starting TLS to ensure secure connection
+        connection.starttls()
+
+        connection.login(user=my_email, password=my_password)
+        connection.sendmail(
+            from_addr=my_email,
+            to_addrs=reciever_email,
+            msg="Subject:ISS Overhead Notifier\n\nLook above ISS is visible in the sky"
+        )
+
 
 # These are the parameters we need to pass during api call
 parameters = {
