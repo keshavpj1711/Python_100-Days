@@ -10,6 +10,7 @@ class QuizGUI:
         # basically we define the data type of the parameter that we want
         self.quiz_brain = quiz_brain
         
+        # Getting the TK window up and running
         self.window = tk.Tk()
         self.window.title("QuizApp")
         self.window.config(height=500, width=400)
@@ -17,7 +18,7 @@ class QuizGUI:
         self.window.configure(bg=THEME_COLOR, padx=20, pady=20)
 
         # Creating a Label for score
-        self.score_label = tk.Label(text=f"Score:{self.quiz_brain.user_score}", font=("Arial", 10, "normal"), fg="white", bg=THEME_COLOR)
+        self.score_label = tk.Label(text=f"Score:{self.quiz_brain.user_score}", font=("Arial", 15, "normal"), fg="white", bg=THEME_COLOR)
         self.score_label.grid(column=0, row=0)
 
         # Creating a canvas
@@ -38,14 +39,25 @@ class QuizGUI:
 
     
     def get_next_question(self):
-        # Basically here we will also update the score everytime
-        self.score_label.configure(text=f"Score:{self.quiz_brain.user_score}")
 
-        q_text = self.quiz_brain.next_question()[0] 
-        # Since this returns list with question at 0 as well as ans at 1 index
+        if self.quiz_brain.question_number < 10: # According to indexing
+            # Basically here we will also update the score everytime
+            self.score_label.configure(text=f"Score:{self.quiz_brain.user_score}")
 
-        # Changing text in canvas
-        self.question_space.itemconfig(self.question_text, text=f"{q_text}")
+            q_text = self.quiz_brain.next_question()[0] 
+            # Since this returns list with question at 0 as well as ans at 1 index
+
+            # Changing text in canvas
+            self.question_space.itemconfig(self.question_text, text=f"{q_text}")
+
+        else:
+            self.score_label.configure(text=f"Final Score:{self.quiz_brain.user_score}")
+
+            self.question_space.itemconfig(self.question_text, text="Quiz Completed")
+
+            # And next thing we want to do is disable those buttons
+            self.false_button.config(state="disabled")
+            self.true_button.config(state="disabled")
 
     def true_clicked(self):
         if self.quiz_brain.check_answer("T") == 1:
