@@ -12,6 +12,7 @@ class QuizGUI:
         
         self.window = tk.Tk()
         self.window.title("QuizApp")
+        self.window.config(height=500, width=400)
 
         self.window.configure(bg=THEME_COLOR, padx=20, pady=20)
 
@@ -37,6 +38,9 @@ class QuizGUI:
 
     
     def get_next_question(self):
+        # Basically here we will also update the score everytime
+        self.score_label.configure(text=f"Score:{self.quiz_brain.user_score}")
+
         q_text = self.quiz_brain.next_question()[0] 
         # Since this returns list with question at 0 as well as ans at 1 index
 
@@ -57,7 +61,9 @@ class QuizGUI:
 
     def flash_screen_color(self, color_to_flash):
         self.question_space.configure(bg=f"{color_to_flash}")
-        self.window.after(500, self.set_screen_color)
+        self.window.after(500, self.set_screen)
 
-    def set_screen_color(self):
+    # This function basically sets the screen for new question
+    def set_screen(self):
         self.question_space.configure(bg="white")
+        self.get_next_question()
