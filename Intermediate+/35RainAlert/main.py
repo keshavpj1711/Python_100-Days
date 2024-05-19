@@ -4,13 +4,13 @@ location = input("Enter your location: ")
 
 parameters = {
     "units": "metric",
-    "api_key": "d14209b71019b3cf0b94de684dcb5c12", 
+    "appid": "d14209b71019b3cf0b94de684dcb5c12", 
     "cnt": 4, 
     # This gives us only first 4 datas that is 12hrs
 }
 
 # Getting response from api and checking for any exceptions
-response = requests.get(url=f"api.openweathermap.org/data/2.5/forecast?q={location}", params=parameters)
+response = requests.get(url=f"https://api.openweathermap.org/data/2.5/forecast?q={location}", params=parameters)
 response.raise_for_status()
 
 data = response.json()
