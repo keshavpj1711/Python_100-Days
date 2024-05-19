@@ -24,8 +24,9 @@ for i in range(0, 4):
     # print(weather_code)
 
     if weather_code < 700:
-        print("Bring Your Umbrella")
         will_rain = True
 
-if will_rain == False:
-    print("You better leave you Umbrella at home")
+if will_rain:
+    print("Bring Your Umbrella")
+else:
+    print("You better leave your Umbrella at home")
