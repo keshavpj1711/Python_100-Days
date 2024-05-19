@@ -28,5 +28,9 @@ for i in range(0, 4):
 
 if will_rain:
     print("Bring Your Umbrella")
+    # Now to add the alert feature what we can do is 
+        # Either send an sms using some messaging api 
+        # Or else send an email as we did earlier
+    # At this point i am going to leave it here as money issues :sadgeko
 else:
     print("You better leave your Umbrella at home")
