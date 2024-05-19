@@ -16,8 +16,16 @@ response.raise_for_status()
 data = response.json()
 weather_list = data["list"]
 
+will_rain = False
 
 for i in range(0, 4):
     weather_temp = weather_list[i]["weather"] # Storing the element with which we are working with
     weather_code = weather_temp[0]["id"]
-    print(weather_code)
+    # print(weather_code)
+
+    if weather_code < 700:
+        print("Bring Your Umbrella")
+        will_rain = True
+
+if will_rain == False:
+    print("You better leave you Umbrella at home")
