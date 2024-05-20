@@ -23,6 +23,7 @@ user_param = {
 # response = requests.post(url=pixela_endpoint, json=user_param)
 # print(response.text)
 
+
 graph_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs"
 
 # Cofiguring your graph
@@ -44,6 +45,7 @@ header = {
  
 pixel_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{graph_config["id"]}"
 
+
 # Pushing a pixel
 
 # Getting current date and changing to required format i.e. yyyymmdd
@@ -52,7 +54,16 @@ present_date = present_date.split("-")
 curr_date = ""
 for i in present_date:
     curr_date += i
-print(curr_date)
+# print(curr_date)
 
 # No of pages read
-pages_read = int(input("No of pages you read: "))
+pages_read = (input("No of pages you read: "))
+
+pixel_config = {
+    "date": curr_date,
+    "quantity": pages_read,
+}
+
+response = requests.post(url=pixel_endpoint, json=pixel_config, headers=header)
+print(response.text)
+print(response)
