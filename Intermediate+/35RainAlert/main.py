@@ -1,10 +1,14 @@
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 location = input("Enter your location: ")
 
 parameters = {
     "units": "metric",
-    "appid": "d14209b71019b3cf0b94de684dcb5c12", 
+    "appid": os.environ.get("api_key"), 
     "cnt": 4, 
     # This gives us only first 4 datas that is 12hrs
 }

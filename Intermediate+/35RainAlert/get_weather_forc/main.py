@@ -1,11 +1,11 @@
 import requests
+import os
+from dotenv import load_dotenv
 
-# Location for which weather is to be accessed
-LOC_LAT = 30.019764
-LOC_LNG = 77.398468
+load_dotenv("../.env")
 
 # API Key for auth
-API_KEY = "d14209b71019b3cf0b94de684dcb5c12"
+API_KEY = os.environ.get("api_key")
 
 # Enter your location
 location = input("Enter location: ")
