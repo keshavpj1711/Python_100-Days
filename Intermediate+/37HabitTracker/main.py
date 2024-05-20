@@ -1,5 +1,6 @@
 import requests
 import os 
+import datetime
 from dotenv import load_dotenv
 
 # Basically loading those environment variables which are to be used
@@ -37,6 +38,21 @@ header = {
     "X-USER-TOKEN": TOKEN,
 }
 
-response = requests.post(url=graph_endpoint, json=graph_config, headers=header)
-print(response.text)
+# Creating and cofiguring our graph
+# response = requests.post(url=graph_endpoint, json=graph_config, headers=header)
+# print(response.text)
+ 
+pixel_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{graph_config["id"]}"
 
+# Pushing a pixel
+
+# Getting current date and changing to required format i.e. yyyymmdd
+present_date = str(datetime.date.today())
+present_date = present_date.split("-")
+curr_date = ""
+for i in present_date:
+    curr_date += i
+print(curr_date)
+
+# No of pages read
+pages_read = int(input("No of pages you read: "))
