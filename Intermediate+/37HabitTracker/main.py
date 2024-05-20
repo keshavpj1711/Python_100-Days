@@ -33,5 +33,10 @@ graph_config = {
     "color": "momiji"
 }
 
-response = requests.post(url=graph_endpoint, params=graph_config)
+header = {
+    "X-USER-TOKEN": TOKEN,
+}
+
+response = requests.post(url=graph_endpoint, json=graph_config, headers=header)
+print(response.text)
 

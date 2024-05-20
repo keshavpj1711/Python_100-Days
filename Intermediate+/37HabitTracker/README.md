@@ -13,3 +13,6 @@ But other than this we have some requests as well:
     - does as the name suggests
 
 Huh! well the syntax didn't change that much 
+
+# Authentication using HTTP Header
+
