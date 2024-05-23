@@ -15,3 +15,6 @@ but as of now the things currently in use are:
         - getting the data in sheet
         - deleting a row
 
+I know initially sheety comes with a lot of limitations but i will further improve this project by using Google Sheets API
+Till that it is what it is....
+
