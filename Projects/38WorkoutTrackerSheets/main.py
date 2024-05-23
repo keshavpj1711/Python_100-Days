@@ -23,10 +23,24 @@ parameters = {
 }
 
 # Making a request
-response = requests.post(url=f"{host_domain}{lang_for_exercise_endpoint}", params=parameters, headers=header)
+response = requests.post(url=f"{host_domain}{lang_for_exercise_endpoint}", json=parameters, headers=header)
 response.raise_for_status() # Raise exceptions if any
 
 # Checking the data we recieved 
 data = response.json()
-print(data)
+# print(data)
+
+# Getting the actual data from the response 
+excercises_data = data["exercises"]
+exercises = [] # [{excercise_type: , duration_min: , cal_burned: ,}]
+
+# Adding all the excerices you did to excercise
+for i in range(len(excercises_data)):
+    exercises.append({
+        "excercise_type": excercises_data[i]["name"],
+        "duration_min": excercises_data[i]["duration_min"],
+        "cal_burned": excercises_data[i]["nf_calories"] 
+    })
+
+    print(exercises[i])
 
