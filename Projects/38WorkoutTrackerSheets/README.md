@@ -18,3 +18,8 @@ but as of now the things currently in use are:
 I know initially sheety comes with a lot of limitations but i will further improve this project by using Google Sheets API
 Till that it is what it is....
 
+# Some Stuff
+
+- My sheet where things will be updated: [gsheet]("https://docs.google.com/spreadsheets/d/1DnOYBFI9K1COvTyvCvJaz1Lh1qT2y2FcRBTJ-nYFkag/edit?usp=sharing")
+- Sheety: [Link]("https://dashboard.sheety.co/")
+- Nutritionix: [Link]("https://docx.syndigo.com/developers/docs/natural-language-for-exercise")
