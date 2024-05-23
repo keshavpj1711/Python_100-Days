@@ -24,3 +24,8 @@ Making soup is basically making a BeautifulSoup() object with parameters
     - Here we will pass what kind of parsing we need to do.
     > For some html.parser might work but for some you might have to use lxml instead by importing the lxml module
 
+## Where to further improve?
+
+Here is the documentation for bs4 which can be used to know more about syntax and stuff: 
+[Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+
