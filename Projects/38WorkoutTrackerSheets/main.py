@@ -1,7 +1,13 @@
 import requests # To actually make api requests
 import os # To get env vars
 from dotenv import load_dotenv # Loading the contents of .env file i.e. env vars
-import datetime # To get todays date and time
+from datetime import datetime # To get todays date and time
+
+
+# Getting todays date and time
+current = datetime.now()
+date = current.strftime("%d/%m/%Y")
+time = current.strftime("%H:%M")
 
 # loading the .env file to access our environment variables
 load_dotenv()
@@ -56,10 +62,28 @@ header_sheety = {
     "Authorization": f"Bearer {os.environ.get("sheety_token")}"
 }
 
-# Connecting with sheety
-response_sheety = requests.get(url=f"{sheety_endpoint}", headers=header_sheety)
-response_sheety.raise_for_status()
+# Getting the data ready to be put into our sheety
+# And posting each row one by one
+for i in range(len(exercises)):
+    data_to_be_fed = {
+        "sheet1": {
+            "date": date,
+            "time": time,
+            "exercise": (exercises[i]["excercise_type"]).capitalize(),
+            "duration": exercises[i]["duration_min"],
+            "calories": exercises[i]["cal_burned"]
+        }
+    }
 
-# Checking the response of sheety api
-data_sheety = response_sheety.json()
-print(data_sheety)
+    # Connecting with sheety for posting 
+    response_sheety = requests.post(url=sheety_endpoint, json=data_to_be_fed, headers=header_sheety)
+    response_sheety.raise_for_status()
+
+print("Successfully posted")
+
+# Checking if the data was posted or not response of sheety api
+# response_sheety = requests.get(url=sheety_endpoint, headers=header_sheety)
+# response_sheety.raise_for_status()
+
+# data_sheety = response_sheety.json()
+# print(data_sheety)
