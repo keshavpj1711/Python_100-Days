@@ -34,3 +34,11 @@ So for me the best way i learnt was by scraping different data from this news we
 
 All of the work for scraping live website is avlbl on `./scraping_live_website/main.py`
 The comments are enough to make you understand what's actually happening in the code.
+
+# Should we scrape or not?
+
+So reagarding the limitations of scraping a website you can visit:\
+`https://domain_name_of_website.com/robots.txt`
+
+This is basically the set of intrustions written by the website owners to tell you what you are actually allowed to do and what not.
+This is actually something which you should check before scraping some website.
