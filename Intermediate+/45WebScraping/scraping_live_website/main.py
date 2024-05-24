@@ -7,6 +7,12 @@ import requests
 response = requests.get("https://news.ycombinator.com/news")
 
 html_data = response.text
-soup = BeautifulSoup(html_data)
-html_data = soup.prettify()
+soup = BeautifulSoup(html_data, "html.parser")
+# html_data = soup.prettify()
 
+# Getting the titles and links of all the top articles
+
+# Getting hold of titles
+titles = soup.select(".titleline a")
+for i in titles:
+    print(i)
