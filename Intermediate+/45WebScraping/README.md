@@ -29,3 +29,8 @@ Making soup is basically making a BeautifulSoup() object with parameters
 Here is the documentation for bs4 which can be used to know more about syntax and stuff: 
 [Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 
+To get more clear understanding of basics scraping a live website is a goods handson exp.
+So for me the best way i learnt was by scraping different data from this news website: [LINK](https://news.ycombinator.com/news)
+
+All of the work for scraping live website is avlbl on `./scraping_live_website/main.py`
+The comments are enough to make you understand what's actually happening in the code.
