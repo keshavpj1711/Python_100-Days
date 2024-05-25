@@ -18,6 +18,6 @@ soup = BeautifulSoup(html_data, "html.parser")
 movie_title_tags = soup.find_all("h3", class_="listicleItem_listicle-item__title__BfenH")
 
 with open("top100_movie_list.txt", "w") as movie_list:
-    for tag in movie_title_tags:
-        movie_list.write(f"{tag.getText()}\n")
+    for i in range(1, len(movie_title_tags)+1):
+        movie_list.write(f"{movie_title_tags[-i].getText()}\n")
     
