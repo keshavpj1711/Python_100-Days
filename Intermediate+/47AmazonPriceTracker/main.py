@@ -27,12 +27,20 @@ def main():
     soup = BeautifulSoup(html_data, "html.parser")
 
     # Getting product name
-
-    # Getting price 
-    listed_price_tag = soup.select_one("#centerCol span .a-price-whole")
-    listed_price = listed_price_tag.getText()
-    price_currency_tag = soup.select_one("#centerCol span .a-price-symbol")
-    price_currency = price_currency_tag.getText()
-    print(f"Price of the product is: {price_currency}{listed_price}")
+    product_title_tag = soup.select_one("#productTitle")
+    product_title = product_title_tag.getText()
+    
+    if input(
+        f"Is this the product u are looking for\n{product_title}\nEnter y/n: "
+        ) == "y":   
+        # Getting price 
+        listed_price_tag = soup.select_one("#centerCol span .a-price-whole")
+        listed_price = listed_price_tag.getText()
+        price_currency_tag = soup.select_one("#centerCol span .a-price-symbol")
+        price_currency = price_currency_tag.getText()
+        print(f"Price of the product is: {price_currency}{listed_price}")
+    
+    else: 
+        print("ReEnter your product link")
 
 main()
