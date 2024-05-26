@@ -30,15 +30,21 @@ def main():
     product_title_tag = soup.select_one("#productTitle")
     product_title = product_title_tag.getText()
     
+    # Pretiffying the product title below
     if input(
-        f"Is this the product u are looking for\n{product_title}\nEnter y/n: "
+        f"Is this the product u are looking for\n{product_title.split(", ")[0].lstrip()}\nEnter y/n: "
         ) == "y":   
+
         # Getting price 
         listed_price_tag = soup.select_one("#centerCol span .a-price-whole")
         listed_price = listed_price_tag.getText()
+        decimal_for_foreign = soup.select_one("#centerCol span .a-price-fraction")
         price_currency_tag = soup.select_one("#centerCol span .a-price-symbol")
         price_currency = price_currency_tag.getText()
-        print(f"Price of the product is: {price_currency}{listed_price}")
+        if decimal_for_foreign == None: 
+            print(f"Price of the product is: {price_currency}{listed_price}")
+        else: 
+            print(f"Price of the product is: {price_currency}{listed_price}{decimal_for_foreign.getText()}")
     
     else: 
         print("ReEnter your product link")
