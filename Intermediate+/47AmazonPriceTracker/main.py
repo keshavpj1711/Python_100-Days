@@ -11,9 +11,12 @@ import csv
 import os
 from bs4 import BeautifulSoup
 import smtplib
+from dotenv import load_dotenv
+
+load_dotenv()
 
 SENDER_EMAIL = "test.user.python0520@gmail.com"
-RECIEVER_EMAIL = "cruser123@gmail.com"
+RECIEVER_EMAIL = "crueser123@gmail.com"
 
 HEADER = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0",
@@ -83,10 +86,6 @@ def main():
         print("ReEnter your product link")
 
     
-
-        
-
-
 def notify_user(product, product_link):
     sender_email = SENDER_EMAIL
     reciever_email = RECIEVER_EMAIL
@@ -99,7 +98,7 @@ def notify_user(product, product_link):
     # Setting up smtp to send message 
     with smtplib.SMTP("smtp.gmail.com", 587) as server:
         server.starttls()
-        server.login(user=f"{sender_email}", password=f"{app_password}")
+        server.login(user=SENDER_EMAIL, password=app_password)
         server.sendmail(
             msg=my_message, 
             from_addr=sender_email, 
