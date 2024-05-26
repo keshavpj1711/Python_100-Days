@@ -1,13 +1,17 @@
+from http.cookiejar import LoadError
 import smtplib
 import datetime as dt
 import pandas as pd
 import random
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 def send_msg(wish, msg, email):
     # Initialising my email
     my_email = "test.user.python0520@gmail.com"
-    my_password = "ezyjbzaszosbhner"
+    my_password = os.environ.get("app_password")
 
     # Creating an obj that establishes connection with the mail server
     with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
