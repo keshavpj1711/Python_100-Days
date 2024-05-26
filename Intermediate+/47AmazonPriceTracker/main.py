@@ -7,11 +7,32 @@
 import requests
 import csv
 import sys
+from bs4 import BeautifulSoup
 
+HEADER = {
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0",
+    "Accept-Language": "en-US,en;q=0.5",
+}
 
 def main():
 
     # Taking inputs 
-    product_link = input("Enter your product link")
+    product_link = input("Enter your product link: ")
+    
+    # Getting HTML data for page 
+    response = requests.get(product_link, headers=HEADER)
+    html_data = response.text
 
+    # Making soup
+    soup = BeautifulSoup(html_data, "html.parser")
 
+    # Getting product name
+
+    # Getting price 
+    listed_price_tag = soup.select_one("#centerCol span .a-price-whole")
+    listed_price = listed_price_tag.getText()
+    price_currency_tag = soup.select_one("#centerCol span .a-price-symbol")
+    price_currency = price_currency_tag.getText()
+    print(f"Price of the product is: {price_currency}{listed_price}")
+
+main()
