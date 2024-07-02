@@ -1,7 +1,7 @@
 from flask import Flask
 
 app = Flask(__name__)
-# This __name__ is basically "__main__"
+# This __name__ is basically tells us which function is being run currently
 # __main__ basically provides an entry point to your code just like main() in other langs
 
 # __main__
