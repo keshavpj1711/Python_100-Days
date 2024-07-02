@@ -15,3 +15,7 @@ Choosing the right tool for your project is crucial. Both libraries and framewor
 | **Customization**         | Highly customizable with minimal overhead.  | Less customizable, relies on framework patterns. |
 | **Testing**               | Easier to test in isolation.                | May require framework-specific testing tools.    |
 
+# What more can we do with functions?
+
+To know more about what is possible with functions in python visit: 
+[Link](https://replit.com/@appbrewery/python-decorators#main.py)
