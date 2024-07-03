@@ -36,7 +36,7 @@ def home_page():
     return render_template("index.html", curr_year=current_year)
 
 # To get our guess gender and age functionality
-@app.route("/guess/<str:name>")
+@app.route("/guess/<name>")
 def guess_age_gender(name):
     return render_template("guess.html", guess_info=predict_age_gender(name))
 
