@@ -6,11 +6,9 @@
     <title>Blogs</title>
 </head>
 <body>
-    <h1>Welcome to my Blogs</h1>
+    {% for post in blogs: %}
+    <h1>{{post["title"]}}</h1>
+    <h2>{{post["subtitle"]}}</h2>
+    {% endfor %}
 </body>
-<footer>
-    <p>
-        @Copyright {{curr_year}}
-    </p>
-</footer>
 </html>

@@ -17,3 +17,7 @@ render_template("index.html", num=var_to_be_passed)
 ```
 
 These `{{}}` can basically render the python code which is put inside them. so not only this we can put actually python code here.
+
+
+# How to use multiline statements in jinja?
+
