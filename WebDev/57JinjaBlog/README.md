@@ -21,3 +21,19 @@ These `{{}}` can basically render the python code which is put inside them. so n
 
 # How to use multiline statements in jinja?
 
+A basic stuff to remember here is that:
+
+- `{% ... %}` for Statements
+- `{{ ... }}` for Expressions to print to the template output
+- `{# ... #}` for Comments not included in the template output
+
+Example: Using **for loop** and **if** statement in jinja:
+
+```jinja
+{% for post in blogs: %}
+{% if post["id"] == 2: %}
+<h1>{{post["title"]}}</h1>
+<h2>{{post["subtitle"]}}</h2>
+{% endif %}
+{% endfor %}
+```
