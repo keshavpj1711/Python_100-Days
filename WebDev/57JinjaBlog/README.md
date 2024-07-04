@@ -66,3 +66,5 @@ with app.test_request_context():
     print(url_for('login', next='/')) # This basically redirects to /login?next=/
     print(url_for('profile', username='John Doe')) # This redirects to /user/John%Doe
 ```
+
+>Learnt a lot with the last example where we have to create that blog thing and render same post.html but with different logic for different blogs
