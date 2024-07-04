@@ -37,3 +37,32 @@ Example: Using **for loop** and **if** statement in jinja:
 {% endif %}
 {% endfor %}
 ```
+
+# URL Building with Flask
+
+This basically helps to move to a required url where we want to go.
+To build a URL to a specific function, use the `url_for()`.
+
+Here's an example to know everything:
+
+```python
+from flask import url_for
+
+@app.route('/')
+def index():
+    return 'index'
+
+@app.route('/login')
+def login():
+    return 'login'
+
+@app.route('/user/<username>')
+def profile(username):
+    return f'{username}\'s profile'
+
+with app.test_request_context():
+    print(url_for('index'))
+    print(url_for('login'))
+    print(url_for('login', next='/')) # This basically redirects to /login?next=/
+    print(url_for('profile', username='John Doe')) # This redirects to /user/John%Doe
+```
