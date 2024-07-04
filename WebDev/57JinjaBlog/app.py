@@ -11,9 +11,9 @@ app = Flask(__name__)
 def home_page():
     return render_template("index.html", blogs=posts.get_blogs())
 
-@app.route("blog/<id>")
-def blogs(id):
-    return render_template("post.html", blog_id=id)
+@app.route("/post/blog/<blog_id>")
+def blogs(blog_id):
+    return render_template("post.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
