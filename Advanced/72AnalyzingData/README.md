@@ -1,0 +1,1 @@
+For this we will be starting with using google collab notebooks just to get our hands on stuff.
